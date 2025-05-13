@@ -35,11 +35,12 @@ public:
     SOFA_CLASS(TriangleModelInRegularGrid, TriangleCollisionModel<sofa::defaulttype::Vec3Types>);
 
     void init() override;
-    void computeBoundingTree ( int maxDepth=0 ) override;
 
     sofa::core::topology::BaseMeshTopology* _topology;
     sofa::core::topology::BaseMeshTopology* _higher_topo;
     core::behavior::MechanicalState<defaulttype::Vec3Types>* _higher_mstate;
+
+    void doComputeBoundingTree ( int maxDepth=0 ) override;
 
 protected:
     TriangleModelInRegularGrid();

@@ -84,21 +84,21 @@ public:
 
     // -- CollisionModel interface
 
-    virtual void resize(int size);
+    // virtual void doResize(int size) override;
 
     //void draw(const core::visual::VisualParams*,int index);
 
     void draw(const core::visual::VisualParams* vparams);    
 
-    inline virtual void computeBoundingTree(int/* maxDepth*/){
+    inline virtual void doComputeBoundingTree(int/* maxDepth*/) override {
         _bt_cshape.recalculateLocalAabb();
     }
 
-    virtual bool canCollideWithElement(int index, CollisionModel* model2, int index2){
+    virtual bool doCanCollideWithElement(int index, CollisionModel* model2, int index2) override {
         if(this == model2)
             return false;
 
-        return CollisionModel::canCollideWithElement(index,model2,index2);
+        return CollisionModel::doCanCollideWithElement(index,model2,index2);
     }
 
     core::behavior::MechanicalState<DataTypes>* getMechanicalState() { return _mstate; }

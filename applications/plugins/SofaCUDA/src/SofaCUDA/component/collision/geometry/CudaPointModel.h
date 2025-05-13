@@ -68,11 +68,11 @@ public:
 
     // -- CollisionModel interface
 
-    virtual void resize(Size size) override;
+    virtual void doResize(Size size) override;
 
-    virtual void computeBoundingTree(int maxDepth=0) override;
+    virtual void doComputeBoundingTree(int maxDepth=0) override;
 
-    //virtual void computeContinuousBoundingTree(double dt, int maxDepth=0);
+    //virtual void doComputeContinuousBoundingTree(double dt, int maxDepth=0);
 
     void draw(const core::visual::VisualParams*,Index index) override;
 

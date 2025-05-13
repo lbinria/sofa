@@ -546,10 +546,10 @@ public:
 
     // -- CollisionModel interface
 
-    void resize(Size size) override;
+    void doResize(Size size) override;
 
     /// Create or update the bounding volume hierarchy.
-    void computeBoundingTree(int maxDepth=0) override;
+    void doComputeBoundingTree(int maxDepth=0) override;
 
     void draw(const core::visual::VisualParams*, Index index) override;
 

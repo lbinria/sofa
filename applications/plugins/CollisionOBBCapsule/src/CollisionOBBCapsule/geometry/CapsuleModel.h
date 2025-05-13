@@ -110,9 +110,9 @@ public:
 
     // -- CollisionModel interface
 
-    void resize(sofa::Size size) override;
+    void doResize(sofa::Size size) override;
 
-    void computeBoundingTree(int maxDepth=0) override;
+    void doComputeBoundingTree(int maxDepth=0) override;
 
     //virtual void computeContinuousBoundingTree(SReal dt, int maxDepth=0);
 
@@ -168,7 +168,7 @@ public:
         return BaseObject::canCreate(obj, context, arg);
     }
 
-    sofa::core::topology::BaseMeshTopology* getCollisionTopology() override
+    sofa::core::topology::BaseMeshTopology* doGetCollisionTopology() override
     {
         return l_topology.get();
     }

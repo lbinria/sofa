@@ -103,11 +103,11 @@ public:
 
     // -- CollisionModel interface
 
-    void resize(sofa::Size size) override;
+    void doResize(sofa::Size size) override;
 
-    void computeBoundingTree(int maxDepth=0) override;
+    void doComputeBoundingTree(int maxDepth=0) override;
 
-    void computeContinuousBoundingTree(SReal dt, int maxDepth=0) override;
+    void doComputeContinuousBoundingTree(SReal dt, int maxDepth=0) override;
 
     void draw(const core::visual::VisualParams*, sofa::Index index) override;
 

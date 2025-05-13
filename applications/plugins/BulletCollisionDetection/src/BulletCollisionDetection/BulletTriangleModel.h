@@ -38,14 +38,14 @@ public:
     virtual void initBullet();
     virtual void updateBullet();
 
-    inline virtual void computeBoundingTree(int/* maxDepth*/){
+    inline virtual void doComputeBoundingTree(int/* maxDepth*/) override {
         //_bt_collision_object
         _bt_gmesh->updateBound();
         //_bt_gmesh->refitTree();
         //_bt_gmesh->postUpdate();
     }
 
-//    inline virtual void computeBoundingTree(int/* maxDepth*/){
+//    inline virtual void doComputeBoundingTree(int/* maxDepth*/){
 //        //_bt_collision_object
 //        //_bt_gmesh->updateBound();
 //        const Vector3 & min = this->mstate->f_bbox.getValue().minBBox();
@@ -61,7 +61,7 @@ public:
 //        //_bt_gmesh->postUpdate();
 //    }
 
-    //virtual void computeBoundingTree(int maxDepth=0);
+    //virtual void doComputeBoundingTree(int maxDepth=0);
 
     inline virtual ~TBulletTriangleModel(){
         delete _bt_mesh;

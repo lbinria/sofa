@@ -89,7 +89,7 @@ public:
 protected:
     CubeCollisionModel();
 public:
-    void resize(sofa::Size size) override;
+    void doResize(sofa::Size size) override;
 
     void setParentOf(sofa::Index childIndex, const sofa::type::Vec3& min, const sofa::type::Vec3& max);
     void setParentOf(sofa::Index childIndex, const sofa::type::Vec3& min, const sofa::type::Vec3& max, const sofa::type::Vec3& normal, const SReal angle=0);
@@ -130,7 +130,7 @@ public:
       *the max depth. The division is made along an axis. This axis corresponds to the biggest dimension of the current bounding box.
       *Note : a bounding box is a Cube here.
       */
-    void computeBoundingTree(int maxDepth=0) override;
+    void doComputeBoundingTree(int maxDepth=0) override;
 
     std::pair<core::CollisionElementIterator,core::CollisionElementIterator> getInternalChildren(sofa::Index index) const override;
 

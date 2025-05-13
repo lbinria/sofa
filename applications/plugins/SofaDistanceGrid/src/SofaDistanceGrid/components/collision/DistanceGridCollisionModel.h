@@ -219,10 +219,10 @@ public:
     /// Update transformation matrices from current rigid state
     void updateState();
 
-    void resize(sofa::Size size) override;
+    void doResize(sofa::Size size) override;
 
     /// Create or update the bounding volume hierarchy.
-    void computeBoundingTree(int maxDepth=0) override;
+    void doComputeBoundingTree(int maxDepth=0) override;
 
     void draw(const core::visual::VisualParams*, sofa::Index index) override;
 
@@ -462,7 +462,7 @@ public:
 
     /// alias used by ContactMapper
     core::behavior::MechanicalState<DataTypes>* getMechanicalState() { return ffd; }
-    core::topology::BaseMeshTopology* getCollisionTopology() override { return ffdMesh; }
+    core::topology::BaseMeshTopology* doGetCollisionTopology() override { return ffdMesh; }
 
     void init() override;
 
@@ -479,12 +479,12 @@ public:
     void setGrid(DistanceGrid* surf, sofa::Index index=0);
 
     /// CollisionModel interface
-    void resize(sofa::Size size) override;
+    void doResize(sofa::Size size) override;
 
     /// Create or update the bounding volume hierarchy.
-    void computeBoundingTree(int maxDepth=0) override;
+    void doComputeBoundingTree(int maxDepth=0) override;
 
-    bool canCollideWithElement(sofa::Index index, CollisionModel* model2, sofa::Index index2) override;
+    bool doCanCollideWithElement(sofa::Index index, CollisionModel* model2, sofa::Index index2) override;
 
     void draw(const core::visual::VisualParams*, sofa::Index index) override;
 

@@ -48,7 +48,7 @@ public:
     virtual void initBullet();
     virtual void updateBullet();
 
-    inline virtual void computeBoundingTree(int/* maxDepth*/){
+    inline virtual void doComputeBoundingTree(int/* maxDepth*/) override {
         _bt_cshape->recalculateLocalAabb();
     }
 
