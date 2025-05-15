@@ -101,13 +101,13 @@ protected:
     CylinderCollisionModel();
     CylinderCollisionModel(core::behavior::MechanicalState<DataTypes>* mstate );
 
-public:
-    void init() override;
-
     // -- CollisionModel interface
     void doResize(sofa::Size size) override;
 
     void doComputeBoundingTree(int maxDepth=0) override;
+
+public:
+    void init() override;
 
     void draw(const core::visual::VisualParams* vparams,sofa::Index index) override;
 

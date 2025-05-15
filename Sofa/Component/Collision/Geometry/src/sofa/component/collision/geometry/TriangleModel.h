@@ -169,9 +169,6 @@ protected:
     virtual void updateFromTopology();
     virtual void updateNormals();
 
-public:
-    void init() override;
-
     // -- CollisionModel interface
 
     void doResize(sofa::Size size) override;
@@ -180,11 +177,19 @@ public:
 
     void doComputeContinuousBoundingTree(SReal dt, int maxDepth=0) override;
 
+    bool doCanCollideWithElement(sofa::Index index, CollisionModel* model2, sofa::Index index2) override;
+
+    sofa::core::topology::BaseMeshTopology* doGetCollisionTopology() override
+    {
+        return l_topology.get();
+    }
+    
+public:
+    void init() override;
+
     void draw(const core::visual::VisualParams*, sofa::Index index) override;
 
     void draw(const core::visual::VisualParams* vparams) override;
-
-    bool doCanCollideWithElement(sofa::Index index, CollisionModel* model2, sofa::Index index2) override;
 
     core::behavior::MechanicalState<DataTypes>* getMechanicalState() { return m_mstate; }
     const core::behavior::MechanicalState<DataTypes>* getMechanicalState() const { return m_mstate; }
@@ -213,10 +218,6 @@ public:
 
     void computeBBox(const core::ExecParams* params, bool onlyVisible=false) override;
 
-    sofa::core::topology::BaseMeshTopology* doGetCollisionTopology() override
-    {
-        return l_topology.get();
-    }
 };
 
 template<class DataTypes>

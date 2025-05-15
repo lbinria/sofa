@@ -79,8 +79,6 @@ public:
     friend class TPoint<DataTypes>;
 protected:
     PointCollisionModel();
-public:
-    void init() override;
 
     // -- CollisionModel interface
 
@@ -88,10 +86,18 @@ public:
 
     void doComputeContinuousBoundingTree(SReal dt, int maxDepth=0) override;
 
+    bool doCanCollideWithElement(sofa::Index index, CollisionModel* model2, sofa::Index index2) override;
+
+    sofa::core::topology::BaseMeshTopology* doGetCollisionTopology() override
+    {
+        return l_topology.get();
+    }
+    
+public:
+    void init() override;
+
     void draw(const core::visual::VisualParams*, sofa::Index index) override;
     void draw(const core::visual::VisualParams* vparams) override;
-
-    bool doCanCollideWithElement(sofa::Index index, CollisionModel* model2, sofa::Index index2) override;
 
     core::behavior::MechanicalState<DataTypes>* getMechanicalState() { return mstate; }
 
@@ -117,11 +123,6 @@ public:
 
     void computeBBox(const core::ExecParams* params, bool onlyVisible) override;
     void updateNormals();
-
-    sofa::core::topology::BaseMeshTopology* doGetCollisionTopology() override
-    {
-        return l_topology.get();
-    }
 
 protected:
 

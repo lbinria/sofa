@@ -63,13 +63,14 @@ public:
     friend class Ray;
 protected:
     RayCollisionModel(SReal defaultLength=1);
-public:
-    void init() override;
 
     // -- CollisionModel interface
     void doResize(sofa::Size size) override;
 
     void doComputeBoundingTree(int maxDepth) override;
+
+public:
+    void init() override;
 
     void draw(const core::visual::VisualParams*, sofa::Index index) override;
     void draw(const core::visual::VisualParams* vparams) override;

@@ -39,12 +39,13 @@ public:
     sofa::core::topology::BaseMeshTopology* _topology;
     sofa::core::topology::BaseMeshTopology* _higher_topo;
     core::behavior::MechanicalState<defaulttype::Vec3Types>* _higher_mstate;
-
-    void doComputeBoundingTree ( int maxDepth=0 ) override;
+    
 
 protected:
     TriangleModelInRegularGrid();
     ~TriangleModelInRegularGrid();
+
+    void doComputeBoundingTree ( int maxDepth=0 ) override;
 };
 
 }  // namespace sofa::component::collision::geometry

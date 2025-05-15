@@ -38,6 +38,25 @@ public:
     virtual void initBullet();
     virtual void updateBullet();
 
+    inline virtual ~TBulletTriangleModel(){
+        delete _bt_mesh;
+        delete _bt_gmesh;
+    }
+
+    virtual void init();
+
+    virtual void reinit();
+
+    void handleEvent(sofa::core::objectmodel::Event * ev);
+
+ 	inline virtual void setMargin(SReal m){ *margin.beginEdit() = m; margin.endEdit(); }
+
+    bool goodSofaBulletLink()const;
+
+protected:
+    template <class MyReal,class ToRead,class ToFill>
+    void myFillFunc(const ToRead & pos,int numverts,ToFill vertexbase,int vertexStride);
+
     inline virtual void doComputeBoundingTree(int/* maxDepth*/) override {
         //_bt_collision_object
         _bt_gmesh->updateBound();
@@ -62,26 +81,6 @@ public:
 //    }
 
     //virtual void doComputeBoundingTree(int maxDepth=0);
-
-    inline virtual ~TBulletTriangleModel(){
-        delete _bt_mesh;
-        delete _bt_gmesh;
-    }
-
-    virtual void init();
-
-    virtual void reinit();
-
-    void handleEvent(sofa::core::objectmodel::Event * ev);
-
- 	inline virtual void setMargin(SReal m){ *margin.beginEdit() = m; margin.endEdit(); }
-
-    bool goodSofaBulletLink()const;
-
-protected:
-    template <class MyReal,class ToRead,class ToFill>
-    void myFillFunc(const ToRead & pos,int numverts,ToFill vertexbase,int vertexStride);
-
 
     btTriangleMesh * _bt_mesh;
     btGImpactMeshShape * _bt_gmesh;
